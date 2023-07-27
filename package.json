@@ -1,0 +1,76 @@
+{
+  "name": "my-electron-app",
+  "version": "1.0.0",
+  "description": "1",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": " cross-env NODE_ENV=development nodemon --watch  main.js  --exec electron-forge start",
+    "buildWin": " cross-env NODE_ENV=production electron-builder --win",
+    "package": "cross-env NODE_ENV=production electron-forge package",
+    "package:test": "cross-env NODE_ENV=development electron-forge package",
+    "make": "cross-env NODE_ENV=production electron-forge make",
+    "make:test": "cross-env NODE_ENV=development electron-forge make",
+    "release": "cross-env NODE_ENV=production GH_TOKEN=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 electron-builder"
+  },
+  "author": "2",
+  "license": "ISC",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.1.1",
+    "@electron-forge/maker-deb": "^6.1.1",
+    "@electron-forge/maker-rpm": "^6.1.1",
+    "@electron-forge/maker-squirrel": "^6.1.1",
+    "@electron-forge/maker-zip": "^6.1.1",
+    "electron": "^25.0.0",
+    "electron-builder": "^24.4.0",
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-updater": "^6.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aluotianyi/electron-publish.git"
+  },
+  "build": {
+    "productName": "鲸彩管理系统",
+    "copyright": "Copyright © 2023 Lty",
+    "directories": {
+      "output": "./out"
+    },
+    "nsis": {
+      "installerIcon": "jc.ico",
+      "uninstallerIcon": "jc.ico",
+      "installerHeaderIcon": "jc.ico",
+      "oneClick": false,
+      "allowElevation": true,
+      "language": "2052",
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "鲸彩"
+    },
+    "asar": false,
+    "files": [
+      "config.js",
+      "main.js",
+      "jc.ico"
+    ],
+    "publish": [
+      "github"
+    ],
+    "win": {
+      "icon": "jc.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "ia32"
+          ]
+        }
+      ]
+    }
+  }
+}
